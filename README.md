@@ -15,6 +15,7 @@ Open http://localhost:4175. Guest records stay in that browser. Email confirmati
 ```sh
 node check-workspace.cjs
 node check-account.cjs
+node check-social.cjs
 ```
 
 `supabase-verify.sql` tests database access rules within a transaction and rolls back all test fixtures. Run it in the Supabase SQL Editor after setup.
@@ -26,6 +27,8 @@ node check-account.cjs
 3. Keep email confirmations enabled. Use a custom SMTP provider for confirmation and password recovery emails to general users. Supabase's default mail sender is restricted to project team addresses.
 4. Put only the project URL and **publishable** key in `auth-config.js`. Never commit a secret key, service_role key, database password, personal access token, or SMTP credentials.
 5. Publish the static files to GitHub Pages. The pinned Supabase browser SDK is bundled as `supabase.js` (2.102.0), with its license in `SUPABASE-LICENSE.txt`; no build step is needed.
+
+For Google sign-in, follow [SOCIAL-LOGIN-SETUP.md](SOCIAL-LOGIN-SETUP.md). Google login uses the provider's identity verification and does not depend on confirmation emails. The button stays disabled until Supabase reports that the provider is enabled.
 
 ## Data behavior
 
